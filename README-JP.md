@@ -46,7 +46,7 @@ CLUSTERPROをインストールしている各サーバに node.js をインス�
 1. 統合Cluster WebUI 用サーバに php / Apache をインストールする  
 2. ecx_information.tar.gz を任意の場所にダウンロードする。  
 3. /var/www/html 配下に ecx_information.tar.gz を解凍する。  
-   - #cd /var/www/html  
+    - #cd /var/www/html  
     - #tar -zxvf ecx_information.tar.gz  
 4. /www/var/html/config.ini に追加したいクラスタの情報を記載する。  
   - 追記内容は以下です
@@ -67,7 +67,7 @@ CLUSTERPROをインストールしている各サーバに node.js をインス�
 ・config.iniに指定するセクションは 必ず1からの連番 を指定してください。
 ・config.iniに記載したパラメータに不備がある場合は、正しく表示されない場合があります。
 ・config.iniに指定するIPアドレスは、クラスタに所属するIPアドレスのうち、１つのみの指定ください。
-・グループが複数存在するクラスタの場合、グループに存在するリソースが正しく取得できません。次期移行対応いたします。
+・グループが複数存在するクラスタの場合、グループに存在するリソースが正しく取得できません。次期バージョン以降対応いたします。
 
 ### 物件のディレクトリ構造
 
@@ -89,7 +89,6 @@ ecx_information.tar.gz
 
 ### 補足情報
 
-以下の環境にて評価を実施しました
 - 統合Cluster WebUI 用サーバ
     - Red Hat Enterprise Linux Server release 7.6 (Maipo)
 
