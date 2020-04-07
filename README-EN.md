@@ -20,7 +20,7 @@ In the following section, this document describes how to use the sample script.
  +--| EXPRESSCLUSTER X 4.2 for Windows  |
  |  | - 2node cluster		        +-----------+
  |  +-----------------------------------+	    |
- |						    |                                       |
+ |						    |                                       
  |  +--------------------------------+              |
  +--| EXPRESSCLUSTER X 4.2 for Linux |    +---------+---------+       +--------------+
  |  | - 3node cluster                +----+                   |       |              |
