@@ -44,10 +44,10 @@ CLUSTERPROをインストールしている各サーバに node.js をインス�
 
 ### サンプルスクリプトの使い方
 1. 統合Cluster WebUI 用サーバに php / Apache をインストールする  
-2. ecx_information.tar.gz を任意の場所にダウンロードする。  
-3. /var/www/html 配下に ecx_information.tar.gz を解凍する。  
+2. ecxinfo-1.0.0.tar.gz を任意の場所にダウンロードする。  
+3. /var/www/html 配下に ecxinfo-1.0.0.tar.gz を解凍する。  
     - #cd /var/www/html  
-    - #tar -zxvf ecx_information.tar.gz  
+    - #tar -zxvf ecxinfo-1.0.0.tar.gz  
 4. /www/var/html/config.ini に追加したいクラスタの情報を記載する。  
   - 追記内容は以下です
  
