@@ -9,7 +9,7 @@ HTTP/HTTPSリクエストとして受信し、処理結果をHTTPレスポンス
 
 本機能を使用することで、CLUSTERPROを導入している複数のクラスタの状態を一元的に管理(以降 統合Cluster WebUI)すること が可能となります。
 
-サンプルとして、phpファイルを使用した、統合 Cluster WebUI 用スクリプトを作成しましたので、提供いたします。
+サンプルとして、phpファイルを使用した、統合 Cluster WebUI 用スクリプトを作成しましたので、提供いたします。  
 これ以降、本ドキュメントでは、サンプルスクリプトの使用方法について記載していきます。
 
 ### 構成
@@ -44,11 +44,24 @@ CLUSTERPROをインストールしている各サーバに node.js をインス�
 
 ### サンプルスクリプトの使い方
 1. 統合Cluster WebUI 用サーバに php / Apache をインストールする  
-2. ecxinfo-1.0.0.tar.gz を任意の場所にダウンロードする。  
-3. /var/www/html 配下に ecxinfo-1.0.0.tar.gz を解凍する。  
-    - #cd /var/www/html  
-    - #tar -zxvf ecxinfo-1.0.0.tar.gz  
-4. /www/var/html/config.ini に追加したいクラスタの情報を記載する。  
+2. サンプルスクリプト等を以下の構成で配置する  
+```
+var/
+　└ www/
+　   └ html/
+         |- ecxinfo.php
+         |- config.ini
+         |- python
+         |    |- cluster_cls.py
+         |    |- cluster_grp.py
+         |    |- cluster_mon.py
+         |    |- cluster_rsc.py
+         |    |- cluster_srv.py
+         |
+         |- image
+              |- kurara.png
+```
+3. /www/var/html/config.ini に追加したいクラスタの情報を記載する。  
   - 追記内容は以下です
  
     | パラメータ | 説明 |
@@ -60,7 +73,7 @@ CLUSTERPROをインストールしている各サーバに node.js をインス�
     | host = 192.168.0.1 | RESTFul API を実行する IPアドレス を記載 |
     | port = 29009 | RESTFul API で使用する ポート番号 を記載 |
 
-5. webブラウザにて以下を実施してください  
+4. webブラウザにて以下を実施してください  
     - http://IPaddress/ecxinfo.php
 
 ### 注意事項
@@ -69,26 +82,7 @@ CLUSTERPROをインストールしている各サーバに node.js をインス�
 ・config.iniに指定するIPアドレスは、クラスタに所属するIPアドレスのうち、１つのみの指定ください。
 ・グループが複数存在するクラスタの場合、グループに存在するリソースが正しく取得できません。次期バージョン以降対応いたします。
 
-### 物件のディレクトリ構造
-
-```
-ecx_information.tar.gz
-    |
-    |- ecxinfo.php
-    |- config.ini
-    |- python
-    |    |- cluster_cls.py
-    |    |- cluster_grp.py
-    |    |- cluster_mon.py
-    |    |- cluster_rsc.py
-    |    |- cluster_srv.py
-    |
-    |- image
-         |- kurara.png
-```
-
 ### 補足情報
-
 - 統合Cluster WebUI 用サーバ
     - Red Hat Enterprise Linux Server release 7.6 (Maipo)
 
