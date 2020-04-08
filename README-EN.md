@@ -1,7 +1,7 @@
 # Integrated Cluster WebUI by RESTful API
 
 ### About this guide
-We have released EXPRESSCLUSTER X 4.2 .
+We have released EXPRESSCLUSTER X 4.2 .  
 We have started offering API services to enhance cooperation with other products.(RESTful API as below)
 
 To begin with, RESTful API service is running as HTTP Server on each server in the cluster.
@@ -11,7 +11,7 @@ Once RESTful API service receives HTTP / HTTPS requests from them, it returns th
 By using this function, you will be able to unify the management of EXPRESSCLUSTER cluster systems. (Integrated Cluster WebUI as below) 
  
 As sample, we provide Integrated Cluster WebUI's script.
-In the following section, this document describes how to use the sample script. 
+In the following section, this document describes how to use the sample scripts. 
 
 ### Configuration
 ```
@@ -45,11 +45,25 @@ If you want to edit port number, you have to edit Cluster Properties > Port No. 
 
 ### How to use sample script
 1. Install php and Apache for Integrated Cluster WebUI Server.    
-2. Download the ecxinfo-1.0.0.tar.gz anywhere.  
-3. Extract the ecxinfo-1.0.0.tar.gz  to /var/www/html.   
-   - #cd /var/www/html  
-   - #tar -zxvf ecxinfo-1.0.0.tar.gz  
-4. set cluster information to /www/var/html/config.ini.  
+2. Put sample scripts in the following configuration.  
+ 
+```
+var/
+　└ www/
+　   └ html/
+         |- ecxinfo.php
+         |- config.ini
+         |- python
+         |    |- cluster_cls.py
+         |    |- cluster_grp.py
+         |    |- cluster_mon.py
+         |    |- cluster_rsc.py
+         |    |- cluster_srv.py
+         |
+         |- image
+              |- kurara.png
+``` 
+3. set cluster information to /www/var/html/config.ini.  
   - For example,
  
     | Parameters | Explanation |
@@ -61,33 +75,15 @@ If you want to edit port number, you have to edit Cluster Properties > Port No. 
     | host = 192.168.0.1 | set ipaddress to executing RESTFul API |
     | port = 29009 | set port number to executing RESTFul API |
 
-5. enter the web browser  
+4. enter the web browser  
     - http://IPaddress/ecxinfo.php
     	- IPaddress is Integrated Cluster WebUI Server's IPaddress.
 
 ### Notes
 - For the section number specified in config.ini, make sure to specify a serial number starting from 1.
-- It is necessary to set a serial number starting from 1 editing config.ini.
 - If the parameters described in config.ini are incomplete, Integrated Cluster WebUI may not be displayed correctly.
 - For the IP address specified in config.ini, specify only one of the IP addresses belonging to the cluster.
 - If a cluster have multiple failover groups, you cannot get what group resources belong to.
-
-### Directory structure
-```
-ecx_information.tar.gz
-    |
-    |- ecxinfo.php
-    |- config.ini
-    |- python
-    |    |- cluster_cls.py
-    |    |- cluster_grp.py
-    |    |- cluster_mon.py
-    |    |- cluster_rsc.py
-    |    |- cluster_srv.py
-    |
-    |- image
-         |- kurara.png
-```
 
 ### Software / OS versions
 
