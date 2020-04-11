@@ -70,10 +70,10 @@ var/
     | ---- | ---- |
     | [1] | Section number |
     | method = http | select http or https |
-    | user = test_user | set username to executing RESTFul API |
-    | pwd = test_pwd | set password to executing RESTFul API |
-    | host = 192.168.0.1 | set ipaddress to executing RESTFul API |
-    | port = 29009 | set port number to executing RESTFul API |
+    | user = test_user | set username to executing RESTful API |
+    | pwd = test_pwd | set password to executing RESTful API |
+    | host = 192.168.0.1 | set ipaddress to executing RESTful API |
+    | port = 29009 | set port number to executing RESTful API |
 
 4. enter the web browser  
     - http://IPaddress/ecxinfo.php
