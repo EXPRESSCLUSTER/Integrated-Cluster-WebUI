@@ -1,17 +1,14 @@
 # Integrated Cluster WebUI by RESTful API
 
-### About this guide
-We have released EXPRESSCLUSTER X 4.2 .  
-We have started offering API services to enhance cooperation with other products.(RESTful API as below)
+EXPRESSCLUSTER X 4.2 offers RESTful API service. It is running as HTTP Server on each server in the cluster.  
+Users or applications can get various cluster status and can operate the cluster by HTTP / HTTPS request to RESTful API service.
+Once RESTful API service receives an HTTP / HTTPS request, it returns the result as an HTTP response.  
+This function can be utilized for consolidation of the management for multiple cluster systems like this sample of **Integrated Cluster WebUI**.
 
-To begin with, RESTful API service is running as HTTP Server on each server in the cluster.
-Users or applications that is running on a client machine can send HTTP / HTTPS requests to RESTful API service to get various cluster status and operate the cluster.
-Once RESTful API service receives HTTP / HTTPS requests from them, it returns the processed result as HTTP response.
+![integrated Cluster WebUI](image/integrated-Cluster-WebUI.png)
 
-By using this function, you will be able to unify the management of EXPRESSCLUSTER cluster systems. (Integrated Cluster WebUI as below) 
- 
-As sample, we provide Integrated Cluster WebUI's script.
-In the following section, this document describes how to use the sample scripts. 
+The scripts required for *Integrated Cluster WebUI* are attached to this document.  
+In the following section describes how to use the sample scripts. 
 
 ### Configuration
 ```
