@@ -9,6 +9,8 @@ HTTP/HTTPSリクエストとして受信し、処理結果をHTTPレスポンス
 
 本機能を使用することで、CLUSTERPROを導入している複数のクラスタの状態を一元的に管理(以降 統合Cluster WebUI)すること が可能となります。
 
+![integrated Cluster WebUI](image/integrated-Cluster-WebUI-JP.png)
+
 サンプルとして、phpファイルを使用した、統合 Cluster WebUI 用スクリプトを作成しましたので、提供いたします。  
 これ以降、本ドキュメントでは、サンプルスクリプトの使用方法について記載していきます。
 
@@ -24,7 +26,7 @@ HTTP/HTTPSリクエストとして受信し、処理結果をHTTPレスポンス
  +--| CLUSTERPRO X 4.2 for Linux |        +---------+---------+       +--------------+
  |  | - 3node cluster            +--------+                   |       |              |
  |  +----------------------------+        | 統合CLUSTER       |       |              |
- |                                        |  WebUI Server     +-------+ クライアント |
+ |                                        |  WebUI Server     +-------+ クライアント  |
  |  +----------------------------+        |                   |       |              |
  +--| CLUSTERPRO X 4.2 for Linux +--------+                   |       |              |
  |  | - 2node cluster            |        +-------------------+       +--------------+
