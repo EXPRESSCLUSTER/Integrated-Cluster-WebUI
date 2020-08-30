@@ -31,7 +31,8 @@ In the following section describes how to use the sample scripts.
 
 
 ### Precondition
-- EXPRESSCLUSTER X 4.2 (internal version 4.2.0-1 / 12.20 ～)
+- EXPRESSCLUSTER X 4.2 (internal version 4.2.2-1 / 12.22 ～)
+(RESTful API is available to 4.2.0-1 / 12.20. This book is for 4.2.2-1 / 12.22)
 - need to install node.js for EXPRESSCLUSTER Server
 
 ### Setup EXPRESSCLUSTER X
@@ -53,6 +54,7 @@ var/
          |- python
          |    |- cluster_cls.py
          |    |- cluster_grp.py
+         |    |- cluster_grp_do_rsc.py
          |    |- cluster_mon.py
          |    |- cluster_rsc.py
          |    |- cluster_srv.py
@@ -80,7 +82,6 @@ var/
 - For the section number specified in config.ini, make sure to specify a serial number starting from 1.
 - If the parameters described in config.ini are incomplete, Integrated Cluster WebUI may not be displayed correctly.
 - For the IP address specified in config.ini, specify only one of the IP addresses belonging to the cluster.
-- If a cluster have multiple failover groups, you cannot get what group resources belong to.
 
 ### Software / OS versions
 

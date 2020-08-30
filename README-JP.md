@@ -35,7 +35,8 @@ HTTP/HTTPSリクエストとして受信し、処理結果をHTTPレスポンス
 
 
 ### 前提条件
-CLUSTERPRO X 4.2 (内部バージョン 4.2.0-1 / 12.20 ～)  
+CLUSTERPRO X 4.2 (内部バージョン 4.2.2-1 / 12.22 ～)  
+(RESTful API は 4.2.0-1 / 12.20 より使用可能だが、本書は 4.2.2-1 / 12.22 向けである)
 CLUSTERPROをインストールしている各サーバに node.js をインストールする  
 
 ### CLUSTERPROの設定
@@ -56,6 +57,7 @@ var/
          |- python
          |    |- cluster_cls.py
          |    |- cluster_grp.py
+         |    |- cluster_grp_do_rsc.py
          |    |- cluster_mon.py
          |    |- cluster_rsc.py
          |    |- cluster_srv.py
@@ -82,7 +84,6 @@ var/
 ・config.iniに指定するセクションは 必ず1からの連番 を指定してください。  
 ・config.iniに記載したパラメータに不備がある場合は、正しく表示されない場合があります。  
 ・config.iniに指定するIPアドレスは、クラスタに所属するIPアドレスのうち、１つのみの指定ください。  
-・グループが複数存在するクラスタの場合、グループに存在するリソースが正しく取得できません。次期バージョン以降対応いたします。  
 
 ### 補足情報
 - 統合Cluster WebUI 用サーバ

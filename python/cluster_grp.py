@@ -50,36 +50,28 @@ try:
         sys.exit()
 
     # print data
-    cur_srv_fix_flg = 0
-    for i in range(len(json_dict_srvlist['servers'])):
-        srvname = json_dict_srvlist['servers'][i]['name']
-        for j in range(len(json_dict_grpsts['groups'])):
-            cursrvname = json_dict_grpsts['groups'][j]['current']
-            if srvname == cursrvname:
-                if cur_srv_fix_flg == 0:
-                    cur_lbl = '{:<32}'.format('current')
-                    current = json_dict_grpsts['groups'][j]['current']
-                    print('{0}:{1}'.format(cur_lbl, current))
-                    cur_srv_fix_flg = 1
-                name = '{:<32}'.format(json_dict_grpsts['groups'][j]['name'])
-                sts = json_dict_grpsts['groups'][j]['status']
-                print('{0}:{1}'.format(name, sts))
-		
-        cur_srv_fix_flg = 0
-
-    cur_non_srv_fix_flg = 0
     for i in range(len(json_dict_grpsts['groups'])):
         cursrvname = json_dict_grpsts['groups'][i]['current']
         if cursrvname == "None":
-            if cur_non_srv_fix_flg == 0:
-                cur_lbl = '{:<32}'.format('current')
-                current = json_dict_grpsts['groups'][i]['current']
-                print('{0}:{1}'.format(cur_lbl, current))
-                cur_non_srv_fix_flg = 1
+            cur_lbl = '{:<32}'.format('current')
+            current = json_dict_grpsts['groups'][i]['current']
+            print('{0}:{1}'.format(cur_lbl, current))
             name = '{:<32}'.format(json_dict_grpsts['groups'][i]['name'])
             sts = json_dict_grpsts['groups'][i]['status']
             print('{0}:{1}'.format(name, sts))
-	
+        else:
+            for j in range(len(json_dict_srvlist['servers'])):
+                srvname = json_dict_srvlist['servers'][j]['name']
+                if cursrvname == srvname:
+                    cur_lbl = '{:<32}'.format('current')
+                    current = json_dict_grpsts['groups'][i]['current']
+                    print('{0}:{1}'.format(cur_lbl, current))
+                    name = '{:<32}'.format(json_dict_grpsts['groups'][i]['name'])
+                    sts = json_dict_grpsts['groups'][i]['status']
+                    print('{0}:{1}'.format(name, sts))
+                    continue
+
+
 except:
     traceback.print_exc()
     print('abnormal end.')

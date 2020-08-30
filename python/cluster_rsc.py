@@ -14,8 +14,9 @@ try:
     pwd = config.get(args[1], "pwd")
     host = config.get(args[1], "host")
     port = config.get(args[1], "port")
+    rscname = args[2]
 
-    url_rsc = '{0}://{1}:{2}/api/v1/resources'.format(method, host, port) 
+    url_rsc = '{0}://{1}:{2}/api/v1/resources/{3}'.format(method, host, port, rscname) 
     url_srv_select = '{0}://{1}:{2}/api/v1/servers?select=name'.format(method, host, port)
 
     headers = {}
@@ -53,19 +54,15 @@ try:
 	for i in range(len(json_dict_srvlist['servers'])):
 	    srvname = json_dict_srvlist['servers'][i]['name']
             if srvname == cursrvname:
-                cur_lbl = '{:<32}'.format('current')
                 current = json_dict_rscsts['resources'][j]['current']
-                print('{0}:{1}'.format(cur_lbl, current))
-                name = '{:<32}'.format(json_dict_rscsts['resources'][j]['name'])
+                print('{0}'.format(current))
                 sts = json_dict_rscsts['resources'][j]['status']
-                print('{0}:{1}'.format(name, sts))
+                print('{0}'.format(sts))
         if cursrvname == "None":
-            cur_lbl = '{:<32}'.format('current')
             current = json_dict_rscsts['resources'][j]['current']
-            print('{0}:{1}'.format(cur_lbl, current))
-            name = '{:<32}'.format(json_dict_rscsts['resources'][j]['name'])
+            print('{0}'.format(current))
             sts = json_dict_rscsts['resources'][j]['status']
-            print('{0}:{1}'.format(name, sts))
+            print('{0}'.format(sts))
 
 except:
     traceback.print_exc()

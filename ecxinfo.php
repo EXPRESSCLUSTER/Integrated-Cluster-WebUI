@@ -38,6 +38,7 @@ for ($i = 1; $i <= $clusternum; $i++) {
 		$crtgrpsrv = str_replace(':','',$output[$z]);
 		$z++;
 		${'grpname'.$i.'_'.$j} = substr($output[$z], 0, strcspn($output[$z], ' '));
+		$grpname = ${'grpname'.$i.'_'.$j};
 		$output[$z] = str_replace(${'grpname'.$i.'_'.$j},'',$output[$z]);
 		$grpstatus = str_replace(':','',$output[$z]);
 
@@ -48,30 +49,30 @@ for ($i = 1; $i <= $clusternum; $i++) {
 				${'grpstatus'.$i.'_'.$j.'_'.$s} = '-';
 			}
 		}
-		$z++;
-	}
 
-	#get rscname, rscstatus
-	$command = $output = NULL;
-	$command="python python/cluster_rsc.py $i";
-	exec($command,$output);
-	${'rsccnt'.$i} = count($output) / 2;
-
-	$z = 0;
-	for ($j = 1; $j <= ${'rsccnt'.$i}; $j++) {
-		$output[$z] = str_replace('current','',$output[$z]);
-		$crtrscsrv = str_replace(':','',$output[$z]);
-		$z++;
-		${'rscname'.$i.'_'.$j} = substr($output[$z], 0, strcspn($output[$z], ' '));
-		$output[$z] = str_replace(${'rscname'.$i.'_'.$j},'',$output[$z]);
-		$rscstatus = str_replace(':','',$output[$z]);
-
-		for ($s = 1; $s <= ${'srvcnt'.$i}; $s++) {
-			if (strpos($crtrscsrv, ${'srvname'.$i.'_'.$s}) !== false) {
-				${'rscstatus'.$i.'_'.$j.'_'.$s} = $rscstatus;
-			} else {
-				${'rscstatus'.$i.'_'.$j.'_'.$s} = '-';
+		#get group depend on resources
+		$command = $output2 = NULL;
+		$command="python python/cluster_grp_do_rsc.py $i $grpname";
+		exec($command,$output2);
+		${'rsccnt'.$i.'_'.$j} = count($output2);
+		$y = 0;
+		for ($r = 1; $r <= ${'rsccnt'.$i.'_'.$j}; $r++) {
+			${'rscname'.$i.'_'.$j.'_'.$r} = $output2[$y];
+			$rscname = ${'rscname'.$i.'_'.$j.'_'.$r};
+			#get rscstatus
+			$command = $output3 = NULL;
+			$command="python python/cluster_rsc.py $i $rscname";
+			exec($command,$output3);
+			$crtrscsrv = $output3[0];
+			$rscstatus = $output3[1];
+			for ($s = 1; $s <= ${'srvcnt'.$i}; $s++) {
+				if (strpos($crtrscsrv, ${'srvname'.$i.'_'.$s}) !== false) {
+					${'rscstatus'.$i.'_'.$j.'_'.$r.'_'.$s} = $rscstatus;
+				} else {
+					${'rscstatus'.$i.'_'.$j.'_'.$r.'_'.$s} = '-';
+				}
 			}
+			$y++;
 		}
 		$z++;
 	}
@@ -155,19 +156,18 @@ for ($i = 1; $i <= $clusternum; $i++) {
 			<?php
 				}
 			?>
-			</tr>
-		<?php
-			}
-		?>
-
-		<?php
-			for ($j = 1; $j <= ${'rsccnt'.$i}; $j++) {
-		?>
-				<tr><td align="right"> <?php echo ${'rscname'.$i.'_'.$j} ?> </td>
 			<?php
-				for ($s = 1; $s <= ${'srvcnt'.$i}; $s++) {
+				for ($r = 1; $r <= ${'rsccnt'.$i.'_'.$j}; $r++) {
 			?>
-					<th> <?php echo ${'rscstatus'.$i.'_'.$j.'_'.$s} ?> </th>
+					<tr><td align="right"> <?php echo ${'rscname'.$i.'_'.$j.'_'.$r} ?> </td>
+				<?php
+					for ($s = 1; $s <= ${'srvcnt'.$i}; $s++) {
+				?>
+						<th> <?php echo ${'rscstatus'.$i.'_'.$j.'_'.$r.'_'.$s} ?> </th>
+				<?php
+					}
+				?>
+				</tr>
 			<?php
 				}
 			?>
@@ -175,6 +175,7 @@ for ($i = 1; $i <= $clusternum; $i++) {
 		<?php
 			}
 		?>
+
 
 		<?php
 			for ($j = 1; $j <= ${'moncnt'.$i}; $j++) {
