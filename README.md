@@ -31,8 +31,8 @@ In the following section describes how to use the sample scripts.
 
 
 ### Precondition
-- EXPRESSCLUSTER X 4.2 (internal version 4.2.2-1 / 12.22 ～)
-(RESTful API is available to 4.2.0-1 / 12.20. This book is for 4.2.2-1 / 12.22)
+- EXPRESSCLUSTER X 4.2 (internal version 4.2.2-1 / 12.22 ～)  
+(RESTful API is available to 4.2.0-1 / 12.20. This book is for 4.2.2-1 / 12.22)  
 - need to install node.js for EXPRESSCLUSTER Server
 
 ### Setup EXPRESSCLUSTER X
